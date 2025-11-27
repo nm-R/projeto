@@ -6,7 +6,6 @@
       <a routerLink="/admin/produtos/novo" class="add-btn">Novo Produto</a>
     </div>
 
-<<<<<<< HEAD
     <div *ngIf="carregando" style="text-align: center; padding: 20px;">
       Carregando produtos...
     </div>
@@ -23,13 +22,6 @@
           <th>Preço</th>
           <th>Estoque</th>
           <th>Categoria</th>
-=======
-    <table>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Preço</th>
->>>>>>> upstream/main
           <th>Status</th>
           <th>Ações</th>
         </tr>
@@ -37,7 +29,6 @@
 
       <tbody>
         <tr *ngFor="let p of produtos">
-<<<<<<< HEAD
           <td>{{ p.id }}</td>
           <td>{{ p.nome }}</td>
           <td>R$ {{ p.preco | number:'1.2-2' }}</td> 
@@ -46,34 +37,19 @@
           
           <td class="status" [class.inativo]="!p.ativo">
             {{ p.ativo ? 'Ativo' : 'Inativo' }}
-=======
-          <td>{{ p.nome }}</td>
-          <td>R$ {{ p.preco }}</td>
-          <td class="status" [class.inativo]="p.status === 'Inativo'">
-            {{ p.status }}
->>>>>>> upstream/main
           </td>
 
           <td>
             <a class="action-link" [routerLink]="['/admin/produtos', p.id]">Editar</a> |
-<<<<<<< HEAD
             <a class="action-link delete-link" (click)="excluir(p.id!)">Excluir</a>
-=======
-            <a class="action-link delete-link" (click)="excluir(p.id)">Excluir</a>
->>>>>>> upstream/main
           </td>
         </tr>
       </tbody>
     </table>
 
-<<<<<<< HEAD
     <div *ngIf="!carregando && !erro && produtos.length === 0" style="text-align: center; padding: 20px;">
       Nenhum produto cadastrado. Clique em "Novo Produto" para adicionar um.
     </div>
 
   </div>
 </div>
-=======
-  </div>
-</div>
->>>>>>> upstream/main

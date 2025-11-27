@@ -4,7 +4,6 @@
     <h2 *ngIf="!modoEdicao">Cadastrar Produto</h2>
     <h2 *ngIf="modoEdicao">Editar Produto</h2>
 
-<<<<<<< HEAD
     <div *ngIf="carregando" style="text-align: center; padding: 20px;">
       Carregando...
     </div>
@@ -36,26 +35,6 @@
         <button type="submit">Salvar</button>
         <button type="button" (click)="cancelar()" style="background: #666;">Cancelar</button>
       </div>
-=======
-    <form (ngSubmit)="salvar()">
-
-      <label>Nome do Produto</label>
-      <input type="text" [(ngModel)]="produto.nome" name="nome" required>
-
-      <label>Preço</label>
-      <input type="number" [(ngModel)]="produto.preco" name="preco" required>
-
-      <label>Status</label>
-      <select [(ngModel)]="produto.status" name="status">
-        <option value="Ativo">Ativo</option>
-        <option value="Inativo">Inativo</option>
-      </select>
-
-      <label>Descrição</label>
-      <textarea [(ngModel)]="produto.descricao" name="descricao" rows="4"></textarea>
-
-      <button type="submit">Salvar</button>
->>>>>>> upstream/main
 
     </form>
   </div>
