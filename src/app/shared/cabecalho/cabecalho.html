@@ -1,0 +1,103 @@
+<div class="topbar">
+  <div class="topbar-left">
+    <span>Bem-vindo à UniStore!</span>
+  </div>
+  <div class="topbar-right">
+    <a href="#">
+      <img src="assets/icones/localizacao.svg" width="20" height="20" />
+      Entregar para <strong>19907190</strong>
+    </a>
+
+    <a href="#">
+      <img src="assets/icones/entrega.svg" width="25" height="25"  />
+      Rastrear encomendas
+    </a>
+    
+    <a href="#">
+      <img src="assets/icones/promocoes.svg" width="20" height="20" />
+      Todas promoções
+    </a>
+  </div>
+</div>
+
+<div class="header">
+  <div class="header-left">
+      <img src="assets/icones/logo.svg" width="45" height="45" />
+    <h1 class="logo">UniStore</h1>
+  </div>
+
+  <div class="header-center">
+<form class="search-form">
+  <mat-form-field appearance="fill" class="search-field">
+      <img src="assets/icones/pesquisa.svg" width="30" height="30" />
+    <input
+      matInput
+      placeholder="Pesquise mercadorias..."
+      [formControl]="myControl"
+      [matAutocomplete]="auto" />
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+  </div>
+
+  <div class="header-right">
+    <a routerLink="/auth/login" class="link">
+  <img src="assets/icones/usuario.svg" width="30" height="30"  />
+  Cadastrar/Login
+  </a>
+    <a href="#" class="link">
+      <img src="assets/icones/carrinho.svg" width="30" height="30"  />
+      Carrinho
+    </a>
+  </div>
+</div>
+
+
+
+<div class="categories">
+
+
+  <div class="categories-container">
+    <div 
+      *ngFor="let category of categories" 
+      class="category-item"
+      [class.active]="activeDropdown === category.id">
+      
+      <button 
+        class="category-btn" 
+        (click)="toggleDropdown(category.id)"
+        [attr.aria-expanded]="activeDropdown === category.id">
+        {{ category.name }}
+        <img src="assets/icones/seta.svg" width="20" height="20" />
+      </button>
+      
+      <div class="dropdown-content" *ngIf="activeDropdown === category.id">
+        <div 
+          *ngFor="let subcategory of category.subcategories" 
+          class="dropdown-item"
+          (click)="selectSubcategory(category.name, subcategory)">
+          {{ subcategory }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+
+
+
+<!--
+  <div class="selected-category" *ngIf="selectedCategory">
+    Categoria selecionada: <strong>{{ selectedCategory }}</strong>
+  </div>
+  
+  <div class="selected-category placeholder" *ngIf="!selectedCategory">
+    Nenhuma categoria selecionada
+  </div>
+  -->

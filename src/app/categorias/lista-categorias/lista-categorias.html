@@ -1,0 +1,28 @@
+<div class="list-container">
+  <div class="list-card">
+
+    <div class="list-header">
+      <h2>Categorias</h2>
+      <a routerLink="/admin/categorias/novo" class="add-btn">Nova Categoria</a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th style="width: 150px;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of categorias">
+          <td>{{ c.nome }}</td>
+          <td>
+            <a [routerLink]="['/admin/categorias', c.id]" class="action-link">Editar</a> |
+            <a class="action-link delete-link" (click)="excluir(c.id)">Excluir</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

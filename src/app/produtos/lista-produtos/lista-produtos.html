@@ -1,0 +1,55 @@
+<div class="list-container">
+  <div class="list-card">
+
+    <div class="list-header">
+      <h2>Produtos</h2>
+      <a routerLink="/admin/produtos/novo" class="add-btn">Novo Produto</a>
+    </div>
+
+    <div *ngIf="carregando" style="text-align: center; padding: 20px;">
+      Carregando produtos...
+    </div>
+
+    <div *ngIf="erro" class="error-message" style="color: red; padding: 20px;">
+      {{ erro }}
+    </div>
+
+    <table *ngIf="!carregando && !erro && produtos.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Estoque</th>
+          <th>Categoria</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of produtos">
+          <td>{{ p.id }}</td>
+          <td>{{ p.nome }}</td>
+          <td>R$ {{ p.preco | number:'1.2-2' }}</td> 
+          <td>{{ p.estoque }}</td>
+          <td>{{ p.categoria }}</td>
+          
+          <td class="status" [class.inativo]="!p.ativo">
+            {{ p.ativo ? 'Ativo' : 'Inativo' }}
+          </td>
+
+          <td>
+            <a class="action-link" [routerLink]="['/admin/produtos', p.id]">Editar</a> |
+            <a class="action-link delete-link" (click)="excluir(p.id!)">Excluir</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="!carregando && !erro && produtos.length === 0" style="text-align: center; padding: 20px;">
+      Nenhum produto cadastrado. Clique em "Novo Produto" para adicionar um.
+    </div>
+
+  </div>
+</div>

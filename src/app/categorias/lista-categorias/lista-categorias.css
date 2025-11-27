@@ -1,0 +1,84 @@
+/* CONTAINER */
+.list-container {
+  margin-top: 40px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* CARD */
+.list-card {
+  width: 90%;
+  max-width: 900px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e0e0e0;
+}
+
+/* TÍTULO + BOTÃO */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.list-header h2 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.add-btn {
+  background: #3498db;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.add-btn:hover {
+  background: #2980b9;
+}
+
+/* TABELA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 12px;
+  background: #f3f3f3;
+  font-weight: 600;
+  color: #333;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ececec;
+}
+
+/* LINKS */
+.action-link {
+  color: #3498db;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+}
+
+.delete-link {
+  color: #e74c3c;
+}
+
+.delete-link:hover {
+  text-decoration: underline;
+}

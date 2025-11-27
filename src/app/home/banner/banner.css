@@ -1,0 +1,22 @@
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff; /* fallback caso a imagem demore */
+  overflow: hidden;
+}
+
+.banner img {
+  margin: 20px 30px;
+  object-fit: cover;
+  max-height: 400px; 
+  border-radius: 8px; 
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .banner img {
+    max-height: 250px;
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,42 @@
+<div class="form-container">
+
+  <div class="form-card">
+    <h2 *ngIf="!modoEdicao">Cadastrar Produto</h2>
+    <h2 *ngIf="modoEdicao">Editar Produto</h2>
+
+    <div *ngIf="carregando" style="text-align: center; padding: 20px;">
+      Carregando...
+    </div>
+
+    <form (ngSubmit)="salvar()" *ngIf="!carregando">
+
+      <label>Nome do Produto *</label>
+      <input type="text" [(ngModel)]="produto.nome" name="nome" required>
+
+      <label>Descrição</label>
+      <textarea [(ngModel)]="produto.descricao" name="descricao" rows="4"></textarea>
+
+      <label>Preço *</label>
+      <input type="number" [(ngModel)]="produto.preco" name="preco" step="0.01" required>
+
+      <label>Estoque *</label>
+      <input type="number" [(ngModel)]="produto.estoque" name="estoque" required>
+
+      <label>Categoria *</label>
+      <input type="text" [(ngModel)]="produto.categoria" name="categoria" required>
+
+      <label>Status</label>
+      <select [(ngModel)]="produto.ativo" name="ativo">
+        <option [value]="true">Ativo</option>
+        <option [value]="false">Inativo</option>
+      </select>
+
+      <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <button type="submit">Salvar</button>
+        <button type="button" (click)="cancelar()" style="background: #666;">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="cabecalho">
+    <h2>Pegue as melhores ofertas em <span>Smartphones</span></h2>
+    <a href="#" class="ver-todos">Ver todos</a>
+  </div>
+
+  <div class="lista-produtos">
+    <div class="produto" *ngFor="let produto of produtos">
+      <div class="desconto">{{ produto.desconto }}% OFF</div>
+      <img [src]="produto.imagem" [alt]="produto.nome" />
+      <h3>{{ produto.nome }}</h3>
+      <p class="preco">
+        R${{ produto.preco }}
+        <span class="preco-antigo">R${{ produto.precoAntigo }}</span>
+      </p>
+      <p class="economia">Economize - R${{ produto.economia }}</p>
+    </div>
+  </div>
+</div>

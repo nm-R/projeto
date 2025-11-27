@@ -1,0 +1,16 @@
+<div class="form-container">
+  <div class="form-card">
+
+    <h2>{{ modoEdicao ? 'Editar Categoria' : 'Cadastrar Categoria' }}</h2>
+
+    <form (ngSubmit)="salvar()">
+
+      <label>Nome</label>
+      <input [(ngModel)]="categoria.nome" name="nome" required>
+
+      <button type="submit">{{ modoEdicao ? 'Salvar' : 'Cadastrar' }}</button>
+
+    </form>
+
+  </div>
+</div>

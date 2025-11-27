@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <span class="logo">Admin</span>
+  </div>
+
+  <div class="navbar-right">
+    <!-- PRODUTOS -->
+    <a routerLink="/admin/produtos" routerLinkActive="active">Produtos</a>
+    <a routerLink="/admin/produtos/novo" routerLinkActive="active">Novo Produto</a>
+
+    <span class="divider"></span>
+
+    <!-- CATEGORIAS -->
+    <a routerLink="/admin/categorias" routerLinkActive="active">Categorias</a>
+    <a routerLink="/admin/categorias/novo" routerLinkActive="active">Nova Categoria</a>
+
+    <span class="divider"></span>
+
+    <!-- VOLTAR -->
+    <a routerLink="/home" routerLinkActive="active">Voltar ao site</a>
+  </div>
+</nav>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
