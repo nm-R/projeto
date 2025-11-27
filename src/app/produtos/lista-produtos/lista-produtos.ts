@@ -1,8 +1,20 @@
+<<<<<<< HEAD
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; 
 import { ProdutoService } from '../services/produto-service';
 import { Produto } from '../models/produto.model';
 import { finalize, timeout, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+=======
+import { Component } from '@angular/core';
+
+interface Produto {
+  id: number;
+  nome: string;
+  preco: number;
+  status: 'Ativo' | 'Inativo';
+  descricao: string;   // <-- NOVO
+}
+>>>>>>> upstream/main
 
 @Component({
   selector: 'app-lista-produtos',
@@ -10,6 +22,7 @@ import { throwError } from 'rxjs';
   templateUrl: './lista-produtos.html',
   styleUrl: './lista-produtos.css',
 })
+<<<<<<< HEAD
 export class ListaProdutos implements OnInit {
   produtos: Produto[] = []; 
   carregando = false;
@@ -83,3 +96,15 @@ export class ListaProdutos implements OnInit {
     }
   }
 }
+=======
+export class ListaProdutos {
+produtos: Produto[] = [
+  { id: 1, nome: 'Notebook Lenovo', preco: 3500, status: 'Ativo', descricao: 'Notebook ótimo para estudos.' },
+  { id: 2, nome: 'Mouse Gamer', preco: 150, status: 'Ativo', descricao: 'Mouse com RGB e 2400 DPI.' },
+  { id: 3, nome: 'Teclado Mecânico', preco: 320, status: 'Inativo', descricao: 'Switch blue, barulhento.' },
+];
+  excluir(id: number) {
+    this.produtos = this.produtos.filter(p => p.id !== id);
+  }
+}
+>>>>>>> upstream/main

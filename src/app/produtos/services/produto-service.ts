@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Produto } from '../models/produto.model';
+=======
+>>>>>>> upstream/main
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProdutoService {
+<<<<<<< HEAD
   private apiUrl = 'http://localhost:8080/api/produtos';
 
   constructor(private http: HttpClient) { }
@@ -46,3 +50,7 @@ export class ProdutoService {
     return this.http.get<Produto[]>(`${this.apiUrl}/buscar`, { params });
   }
 }
+=======
+  
+}
+>>>>>>> upstream/main
