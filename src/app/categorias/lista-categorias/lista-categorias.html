@@ -6,10 +6,15 @@
       <a routerLink="/admin/categorias/novo" class="add-btn">Nova Categoria</a>
     </div>
 
-    <table>
+    <div *ngIf="carregando" style="text-align: center; padding: 20px;">
+      Carregando...
+    </div>
+
+    <table *ngIf="!carregando">
       <thead>
         <tr>
           <th>Nome</th>
+          <th>Status</th>
           <th style="width: 150px;">Ações</th>
         </tr>
       </thead>
@@ -17,8 +22,18 @@
         <tr *ngFor="let c of categorias">
           <td>{{ c.nome }}</td>
           <td>
+            <span [style.color]="c.ativo ? 'green' : 'red'">
+              {{ c.ativo ? 'Ativo' : 'Inativo' }}
+            </span>
+          </td>
+          <td>
             <a [routerLink]="['/admin/categorias', c.id]" class="action-link">Editar</a> |
             <a class="action-link delete-link" (click)="excluir(c.id)">Excluir</a>
+          </td>
+        </tr>
+        <tr *ngIf="categorias.length === 0">
+          <td colspan="3" style="text-align: center; padding: 20px;">
+            Nenhuma categoria cadastrada
           </td>
         </tr>
       </tbody>

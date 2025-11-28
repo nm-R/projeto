@@ -3,12 +3,31 @@
 
     <h2>{{ modoEdicao ? 'Editar Categoria' : 'Cadastrar Categoria' }}</h2>
 
-    <form (ngSubmit)="salvar()">
+    <div *ngIf="carregando && modoEdicao" style="text-align: center; padding: 20px;">
+      Carregando...
+    </div>
+
+    <form (ngSubmit)="salvar()" *ngIf="!carregando || !modoEdicao">
 
       <label>Nome</label>
-      <input [(ngModel)]="categoria.nome" name="nome" required>
+      <input 
+        [(ngModel)]="categoria.nome" 
+        name="nome" 
+        required
+        [disabled]="carregando"
+      >
 
-      <button type="submit">{{ modoEdicao ? 'Salvar' : 'Cadastrar' }}</button>
+      <div *ngIf="modoEdicao">
+        <label>Status</label>
+        <select [(ngModel)]="categoria.ativo" name="ativo">
+          <option [value]="true">Ativo</option>
+          <option [value]="false">Inativo</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="carregando">
+        {{ carregando ? 'Salvando...' : (modoEdicao ? 'Salvar' : 'Cadastrar') }}
+      </button>
 
     </form>
 

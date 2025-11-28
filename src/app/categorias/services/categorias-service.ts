@@ -1,39 +1,59 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { Categoria } from '../models/categoria.model';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CategoriasService {
   
-  private categorias = [
-    { id: 1, nome: 'Informática' },
-    { id: 2, nome: 'Acessórios' },
-    { id: 3, nome: 'Periféricos' },
-  ];
+  private apiUrl = 'http://localhost:8080/categorias';
 
-  constructor() {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
-  getCategorias() {
-    return this.categorias;
+  getCategorias(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(this.apiUrl);
   }
 
-  getCategoriaPorId(id: number) {
-    return this.categorias.find(c => c.id === id);
+  getCategoriasAtivas(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(`${this.apiUrl}/ativas`);
   }
 
-  criar(categoria: any) {
-    categoria.id = this.categorias.length + 1;
-    this.categorias.push(categoria);
+  getCategoriaPorId(id: number): Observable<Categoria> {
+    return this.http.get<Categoria>(`${this.apiUrl}/${id}`);
   }
 
-  editar(id: number, dados: any) {
-    const index = this.categorias.findIndex(c => c.id === id);
-    if (index !== -1) {
-      this.categorias[index] = { ...this.categorias[index], ...dados };
-    }
+  criar(categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>(this.apiUrl, categoria).pipe(
+      tap(() => {
+        this.router.navigate(['/admin/categorias']);
+      })
+    );
   }
 
-  excluir(id: number) {
-    this.categorias = this.categorias.filter(c => c.id !== id);
+  editar(id: number, categoria: Categoria): Observable<Categoria> {
+    return this.http.put<Categoria>(`${this.apiUrl}/${id}`, categoria).pipe(
+      tap(() => {
+        this.router.navigate(['/admin/categorias']);
+      })
+    );
+  }
+
+  excluir(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  inativar(id: number): Observable<Categoria> {
+    return this.http.patch<Categoria>(`${this.apiUrl}/${id}/inativar`, {});
+  }
+
+  ativar(id: number): Observable<Categoria> {
+    return this.http.patch<Categoria>(`${this.apiUrl}/${id}/ativar`, {});
   }
 }
